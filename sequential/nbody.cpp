@@ -260,21 +260,16 @@ int main(int argc, char* argv[]) {
 
   
 
-  for (size_t step = 0; step< nbstep; step++) {
-    if (step %printevery == 0)
+  for (size_t step = 0; step < nbstep; ++step) {
+    if (step % printevery == 0)
       dump_state(s, outfile);
-  
-    reset_force(s);
-    for (size_t i=0; i<s.nbpart; ++i)
-      for (size_t j=0; j<s.nbpart; ++j)
-	if (i != j)
-	  update_force(s, i, j);
 
-    for (size_t i=0; i<s.nbpart; ++i) {
-      apply_force(s, i, dt);
-      update_position(s, i, dt);
-    }
-  }
+    reset_force(s);
+    update_force(s, 0, s.nbpart);  
+
+    apply_force(s, 0, dt);         
+    update_position(s, 0, dt);     
+  } 
   //dump_state(s);  
 
   outfile.close();
