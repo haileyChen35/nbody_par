@@ -7,6 +7,6 @@
 #SBATCH --mem=16G
 #SBATCH --output=result.txt
 
-./program 3 200 5000000 50000
-./program 100 1 10000 100
-./program 1000 1 10000 100
+./nbody 3 200 5000000 50000
+./nbody 100 1 10000 100
+./nbody 1000 1 10000 100
